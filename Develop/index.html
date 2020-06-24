@@ -27,10 +27,15 @@
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
+      <nav class="row justify-content-center" id="selectday">
+        <button class="btn btn-primary btn-sm mr-2" id="previousday" type="submit">Previous Day</button>
+        <button class="btn btn-danger btn-sm ml-2 mr-2" id="clear" type="submit">Clear</button>
+        <button class="btn btn-primary btn-sm ml-2" id=nextday type="submit">Next Day</button>
+      </nav>
     </header>
     <section class="container">
       <!-- Timeblocks go here -->
-        <div class="row" id="8am">
+        <div class="row d-flex" id="8am">
           <div class="col-1 hour" id="hour8am">
             <p>8AM</p>
           </div>
@@ -38,7 +43,7 @@
           <div class="col-1 saveBtn" id="save8am"></div>
         </div>
 
-        <div class="row" id="9am">
+        <div class="row d-flex" id="9am">
           <div class="col-1 hour" id="hour9am">
             <p>9AM</p>
           </div>
@@ -46,7 +51,7 @@
           <div class="col-1 saveBtn" id="save9am"></div>
         </div>
 
-        <div class="row" id="10am">
+        <div class="row d-flex" id="10am">
           <div class="col-1 hour" id="hour10am">
             <p>10AM</p>
           </div>
@@ -54,7 +59,7 @@
           <div class="col-1 saveBtn" id="save10am"></div>
         </div>
 
-        <div class="row" id="11am">
+        <div class="row d-flex" id="11am">
           <div class="col-1 hour" id="hour11am">
             <p>11AM</p>
           </div>
@@ -62,7 +67,7 @@
           <div class="col-1 saveBtn" id="save11am"></div>
         </div>
 
-        <div class="row" id="12pm">
+        <div class="row d-flex" id="12pm">
           <div class="col-1 hour" id="hour12pm">
             <p>12PM</p>
           </div>
@@ -70,7 +75,7 @@
           <div class="col-1 saveBtn" id="save12pm"></div>
         </div>
 
-        <div class="row" id="1pm">
+        <div class="row d-flex" id="1pm">
           <div class="col-1 hour" id="hour1pm">
             <p>1PM</p>
           </div>
@@ -78,7 +83,7 @@
           <div class="col-1 saveBtn" id="save1pm"></div>
         </div>
 
-        <div class="row" id="2pm">
+        <div class="row d-flex" id="2pm">
           <div class="col-1 hour" id="hour2pm">
             <p>2PM</p>
           </div>
@@ -86,7 +91,7 @@
           <div class="col-1 saveBtn" id="save2pm"></div>
         </div>
 
-        <div class="row" id="3pm">
+        <div class="row d-flex" id="3pm">
           <div class="col-1 hour" id="hour3pm">
             <p>3PM</p>
           </div>
@@ -94,7 +99,7 @@
           <div class="col-1 saveBtn" id="save3pm"></div>
         </div>
 
-        <div class="row" id="4pm">
+        <div class="row d-flex" id="4pm">
           <div class="col-1 hour" id="hour4pm">
             <p>4PM</p>
           </div>
@@ -102,7 +107,7 @@
           <div class="col-1 saveBtn" id="save4pm"></div>
         </div>
 
-        <div class="row" id="5pm">
+        <div class="row d-flex" id="5pm">
           <div class="col-1 hour" id="hour5pm">
             <p>5PM</p>
           </div>
