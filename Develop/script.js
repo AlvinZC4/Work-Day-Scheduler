@@ -36,7 +36,7 @@ var currentHour = moment().format('H');
 
 
 
-// function to update appearence of calendar based on current time
+// function to update appearence of one row of the calender based on current time
 function updateEachBlock(hourBlock, theHour) {
 
 
@@ -57,6 +57,7 @@ function updateEachBlock(hourBlock, theHour) {
     }
 }
 
+// function to update appearance of all rows of the calendar based on time
 function updateCalendar() {
     updateEachBlock(block8am, 8)
     updateEachBlock(block9am, 9)
