@@ -14,8 +14,20 @@ var block2pm = $("#schedule2pm");
 var block3pm = $("#schedule3pm");
 var block4pm = $("#schedule4pm");
 var block5pm = $("#schedule5pm");
+var save8am = $("#save8am");
+var save9am = $("#save9am");
+var save10am = $("#save10am");
+var save11am = $("#save11am");
+var save12pm = $("#save12pm");
+var save1pm = $("#save1pm");
+var save2pm = $("#save2pm");
+var save3pm = $("#save3pm");
+var save4pm = $("#save4pm");
+var save5pm = $("#save5pm");
 
-var timeBlock = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+
+// An array that contains every possible hour of the day
+var timeBlock = ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
 // Get current date and time form moment.js
 var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -29,31 +41,83 @@ var currentDay =  moment().format('D');
 // Get current hour from moment.js
 var currentHour = moment().format('H');
 
-// console.log(currentYear);
-// console.log(currentMonth);
-// console.log(currentDay);
-// console.log(currentHour);
+function renderStoredData(block, eventHour) {
 
+    var event = JSON.parse(localStorage.getItem(timeBlock[eventHour]))
+    
+    if (!event) {
+        return
+    }
+    block.attr("placeholder", event)
+}
+
+function renderAllStored() {
+    renderStoredData(block8am, 8)
+    renderStoredData(block9am, 9)
+    renderStoredData(block10am, 10)
+    renderStoredData(block11am, 11)
+    renderStoredData(block12pm, 12)
+    renderStoredData(block1pm, 13)
+    renderStoredData(block2pm, 14)
+    renderStoredData(block3pm, 15)
+    renderStoredData(block4pm, 16)
+    renderStoredData(block5pm, 17)
+}
+
+function saveData (blockHour, saveHour, eventHour) {
+    saveHour.on("click", function() {
+    var data = blockHour.val().trim()
+    console.log(data)
+    localStorage.setItem(timeBlock[eventHour],JSON.stringify(data))
+    console.log(timeBlock[eventHour])
+    })
+}
+
+
+saveData(block8am, save8am, 8);
+saveData(block9am, save9am, 9);
+saveData(block10am, save10am, 10);
+saveData(block11am, save11am, 11);
+saveData(block12pm, save12pm, 12);
+saveData(block1pm, save1pm, 13);
+saveData(block2pm, save2pm, 14);
+saveData(block3pm, save3pm, 15);
+saveData(block4pm, save4pm, 16);
+saveData(block5pm, save5pm, 17);
+
+$("#clearCal").on("click", function() {
+    localStorage.clear()
+    block8am.attr("placeholder", "")
+    block9am.attr("placeholder", "")
+    block10am.attr("placeholder", "")
+    block11am.attr("placeholder", "")
+    block12pm.attr("placeholder", "")
+    block1pm.attr("placeholder", "")
+    block2pm.attr("placeholder", "")
+    block3pm.attr("placeholder", "")
+    block4pm.attr("placeholder", "")
+    block5pm.attr("placeholder", "")
+    
+})
 
 
 // function to update appearence of one row of the calender based on current time
 function updateEachBlock(hourBlock, theHour) {
 
-
-    if (timeBlock[theHour] > currentHour) {
-        $(hourBlock).removeClass("past")
-        $(hourBlock).removeClass("present")
-        $(hourBlock).addClass("future")
+    if (theHour > currentHour) {
+        hourBlock.removeClass("past")
+        hourBlock.removeClass("present")
+        hourBlock.addClass("future")
     }
-    else if (timeBlock[theHour] < currentHour) {
-        $(hourBlock).addClass("past")
-        $(hourBlock).removeClass("present")
-        $(hourBlock).removeClass("future")
+    else if (theHour < currentHour) {
+        hourBlock.addClass("past")
+        hourBlock.removeClass("present")
+        hourBlock.removeClass("future")
     }
     else {
-        $(hourBlock).removeClass("past")
-        $(hourBlock).addClass("present")
-        $(hourBlock).removeClass("future")
+        hourBlock.removeClass("past")
+        hourBlock.addClass("present")
+        hourBlock.removeClass("future")
     }
 }
 
@@ -91,10 +155,13 @@ setInterval(function() {
     
     currentHour = new Date()
     currentHour = moment().format('H')
+    // console.log(currentHour)
 
     updateCalendar()
     
 }, 1000)
+
+renderAllStored();
 
 
 })
